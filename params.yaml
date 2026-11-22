@@ -1,0 +1,12 @@
+extract:
+  zip_password: infected      # public password of the DataDog dataset
+  max_files: 5000             # max archive entries scanned per package
+  max_py_bytes: 1000000       # skip single .py files larger than this
+  max_total_py_bytes: 6000000 # stop reading .py after this many bytes per package
+  popular_top_n: 5000         # size of the popular-name reference list
+  workers: 2
+  chunk: 500                  # rows written per checkpoint (run is resumable)
+paths:
+  labels: data/labels/labels_final.csv
+  popular: data/raw/top-pypi-packages.csv
+  features: data/features/features.csv

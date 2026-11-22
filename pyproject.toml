@@ -1,0 +1,12 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "suspackage"
+version = "0.1.0"
+description = "ML CLI interceptor for typosquatted and slopsquatted package detection"
+requires-python = ">=3.9"
+
+[tool.setuptools.packages.find]
+where = ["src"]

@@ -1,0 +1,12 @@
+pandas
+numpy
+rapidfuzz
+tqdm
+pyyaml
+requests
+scikit-learn
+xgboost
+joblib
+mlflow
+dvc
+pytest

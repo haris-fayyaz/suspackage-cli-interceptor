@@ -1,0 +1,12 @@
+# Run this stage only where the raw archives exist (Colab). Teammates use `dvc pull`, not `dvc repro`.
+stages:
+  extract_features:
+    cmd: python -m suspackage.extract
+    deps:
+      - src/suspackage
+      - data/labels/labels_final.csv
+      - data/raw/top-pypi-packages.csv
+    params:
+      - extract
+    outs:
+      - data/features/features.csv
