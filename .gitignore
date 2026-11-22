@@ -1,0 +1,19 @@
+# malware samples: never commit
+pypi_malregistry/
+malicious-software-packages-dataset/
+samples/
+*.zip
+*.gz
+*.whl
+*.tar.gz
+
+# large generated data
+data/raw/
+*.joblib
+*.pkl
+
+# Python and Colab
+__pycache__/
+.ipynb_checkpoints/
+.venv/
+.env
