@@ -3,10 +3,19 @@ extract:
   max_files: 5000             # max archive entries scanned per package
   max_py_bytes: 1000000       # skip single .py files larger than this
   max_total_py_bytes: 6000000 # stop reading .py after this many bytes per package
-  popular_top_n: 5000         # size of the popular-name reference list
+  popular_top_n: 1000         # typosquat targets: the most downloaded packages
   workers: 2
   chunk: 500                  # rows written per checkpoint (run is resumable)
 paths:
   labels: data/labels/labels_final.csv
   popular: data/raw/top-pypi-packages.csv
   features: data/features/features.csv
+random_benign:
+  n_request: 5000        # request extra; many names fail (too new, no sdist, too big)
+  min_age_days: 180      # sampling filter only, never a model feature
+  max_mb: 30
+  workers: 16
+  seed: 42
+  out_dir: /content/benign_random
+  datadog_compromised: /content/malicious-software-packages-dataset/samples/pypi/compromised_lib
+  datadog_manifest: /content/malicious-software-packages-dataset/samples/pypi/manifest.json

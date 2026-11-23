@@ -1,0 +1,17 @@
+README.md
+pyproject.toml
+src/suspackage/__init__.py
+src/suspackage/archive.py
+src/suspackage/config.py
+src/suspackage/extract.py
+src/suspackage/sample_benign.py
+src/suspackage.egg-info/PKG-INFO
+src/suspackage.egg-info/SOURCES.txt
+src/suspackage.egg-info/dependency_links.txt
+src/suspackage.egg-info/top_level.txt
+src/suspackage/features/__init__.py
+src/suspackage/features/code.py
+src/suspackage/features/metadata.py
+src/suspackage/features/name.py
+src/suspackage/features/setup_py.py
+tests/test_features.py

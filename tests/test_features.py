@@ -65,3 +65,13 @@ def test_name_features_skip_self():
     assert nf("requests")["name_edit_dist"] > 0          # never compared with itself
     f = nf("reqeusts")
     assert f["x_nearest_popular"] == "requests" and f["name_edit_dist"] == 2 and f["is_typosquat"] == 1
+
+
+def test_format_detected_by_content(tmp_path):
+    import zipfile
+    p = tmp_path / "wheel-like.tar.gz"          # a zip hiding behind a .tar.gz name
+    with zipfile.ZipFile(p, "w") as zf:
+        zf.writestr("pkg-1.0.dist-info/METADATA", "Name: pkg\n")
+        zf.writestr("pkg/__init__.py", "x = 1\n")
+    pkg = read_package(str(p), CFG)
+    assert pkg.is_wheel and "pkg/__init__.py" in pkg.py

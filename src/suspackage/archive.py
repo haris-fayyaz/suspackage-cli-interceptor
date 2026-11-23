@@ -15,6 +15,7 @@ class Package:
     setup_py: str = ""
     pkg_info: str = ""
     n_entries: int = 0
+    is_wheel: bool = False  # wheels have no setup.py or PKG-INFO, so they are skipped
 
 
 def _depth(p):
@@ -23,6 +24,12 @@ def _depth(p):
 
 def _text(b):
     return b.decode("utf-8", "ignore")
+
+
+def _is_zip(path):
+    """Detect the format from the first bytes, not the file extension."""
+    with open(path, "rb") as f:
+        return f.read(2) == b"PK"
 
 
 def _iter_zip(path, pwd, cap):
@@ -41,7 +48,7 @@ def _iter_tar(path, cap):
 
 def read_package(path, cfg):
     cap = cfg["max_py_bytes"]
-    if path.endswith(".zip"):
+    if _is_zip(path):
         items = _iter_zip(path, cfg["zip_password"].encode(), cap)
     else:
         items = _iter_tar(path, cap)
@@ -51,6 +58,8 @@ def read_package(path, cfg):
         if pkg.n_entries > cfg["max_files"]:
             break
         base = name.rsplit("/", 1)[-1]
+        if ".dist-info/" in name:
+            pkg.is_wheel = True
         if base == "PKG-INFO" and size <= 200_000:
             if info_path is None or _depth(name) < _depth(info_path):
                 pkg.pkg_info, info_path = _text(read()), name

@@ -21,6 +21,8 @@ _CFG = _NAMER = None
 def featurize(name, path, cfg, namer):
     """Features for one package archive. The CLI reuses this at runtime."""
     pkg = read_package(path, cfg)
+    if pkg.is_wheel:
+        raise ValueError("wheel archive, skipped")
     f = {}
     f.update(setup_py.features(pkg.setup_py))
     f.update(code.features(pkg.py))
