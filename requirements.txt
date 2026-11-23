@@ -10,3 +10,4 @@ joblib
 mlflow
 dvc
 pytest
+pyarrow
