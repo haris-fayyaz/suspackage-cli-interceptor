@@ -1,0 +1,32 @@
+{
+  "model": "random_forest",
+  "hyperparameters": {
+    "n_estimators": 500,
+    "min_samples_leaf": 1,
+    "max_features": "sqrt",
+    "max_depth": 30
+  },
+  "use_density": true,
+  "hyperparameters_by_model": {
+    "dummy_baseline": {},
+    "logistic_regression": {
+      "C": 1.0
+    },
+    "random_forest": {
+      "n_estimators": 500,
+      "min_samples_leaf": 1,
+      "max_features": "sqrt",
+      "max_depth": 30
+    },
+    "xgboost": {
+      "subsample": 0.7,
+      "n_estimators": 600,
+      "min_child_weight": 1,
+      "max_depth": 8,
+      "learning_rate": 0.03,
+      "colsample_bytree": 0.8
+    }
+  },
+  "search_iterations": 20,
+  "tuned_on": "holdout protocol dev folds, scored by average precision"
+}
