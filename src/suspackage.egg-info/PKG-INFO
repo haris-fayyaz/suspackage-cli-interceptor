@@ -1,5 +1,0 @@
-Metadata-Version: 2.4
-Name: suspackage
-Version: 0.1.0
-Summary: ML CLI interceptor for typosquatted and slopsquatted package detection
-Requires-Python: >=3.9

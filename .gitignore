@@ -14,6 +14,10 @@ data/raw/
 
 # Python and Colab
 __pycache__/
+*.egg-info/
 .ipynb_checkpoints/
 .venv/
 .env
+
+# experiment tracking fallback (used when DagsHub MLflow is unreachable)
+mlruns/

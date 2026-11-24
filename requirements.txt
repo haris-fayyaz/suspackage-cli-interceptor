@@ -1,5 +1,6 @@
 pandas
 numpy
+scipy
 rapidfuzz
 tqdm
 pyyaml
@@ -7,6 +8,7 @@ requests
 scikit-learn
 xgboost
 joblib
+matplotlib
 mlflow
 dvc
 pytest

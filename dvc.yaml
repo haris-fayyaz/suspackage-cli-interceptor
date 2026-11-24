@@ -1,0 +1,21 @@
+stages:
+  train:
+    cmd: python -m suspackage.train --protocol all
+    deps:
+      - data/features
+      - src/suspackage
+    params:
+      - train
+    outs:
+      - models/suspackage_model.joblib
+      - models/feature_columns.json
+      - models/thresholds.json
+      - models/model_card.md:
+          cache: false
+      - reports/best_params.json:
+          cache: false
+      - reports/figures:
+          cache: false
+    metrics:
+      - reports/metrics.json:
+          cache: false
